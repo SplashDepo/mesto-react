@@ -3,7 +3,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
-import PopupWithImage from "./PopupWithImage";
+import PopupWithImage from "./ImagePopup";
 
 function App() {
   const [isEditProfilePopupOpen, openProfilePopup] = useState(false)
