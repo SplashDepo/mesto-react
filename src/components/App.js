@@ -3,7 +3,7 @@ import Header from "./Header";
 import Main from "./Main";
 import Footer from "./Footer";
 import PopupWithForm from "./PopupWithForm";
-import PopupWithImage from "./ImagePopup";
+import ImagePopup from "./ImagePopup";
 
 function App() {
   const [isEditProfilePopupOpen, openProfilePopup] = useState(false)
@@ -71,7 +71,7 @@ function App() {
       </PopupWithForm>
 
       <PopupWithForm name="delete" title="Удалить изображение" buttonText="Да" />
-      <PopupWithImage onClose={closeAllPopups} card={selectedCard} isOpen={imagePopup} />
+      <ImagePopup onClose={closeAllPopups} card={selectedCard} isOpen={imagePopup} />
     </div>
   );
 }

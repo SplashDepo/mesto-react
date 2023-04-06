@@ -1,7 +1,7 @@
 import React from "react";
 import closeButtonImg from "../images/icons/close-icon.svg"
 
-export default function PopupWithImage(props) {
+export default function ImagePopup(props) {
   return (
     <div className={`popup popup_type_image ${props.isOpen ? 'popup_active' : ''} `}>
       <div className="popup__image-container">
