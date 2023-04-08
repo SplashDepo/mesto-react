@@ -10,7 +10,7 @@ export default function ImagePopup(props) {
             alt="Кнопка закрыть" />
         </button>
         <img className="popup__image" src={props.card.link} alt={props.card.name} />
-        <p className="popup__description"></p>
+        <p className="popup__description">{props.card.name}</p>
       </div>
     </div>
   )

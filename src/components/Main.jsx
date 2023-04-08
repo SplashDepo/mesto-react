@@ -5,29 +5,23 @@ import { apiConnect } from "../utils/Api";
 import Card from "./Card";
 
 export default function Main({ onEditProfile, onAddPlace, onEditAvatar, onCardClick }) {
-  const [userName, setUserName] = useState()
-  const [userDescription, setUserDescription] = useState()
-  const [userAvatar, setUserAvatar] = useState()
-
+  const [userName, setUserName] = useState('')
+  const [userDescription, setUserDescription] = useState('')
+  const [userAvatar, setUserAvatar] = useState('')
 
   const [cards, setCards] = useState([])
 
-
   useEffect(() => {
-    apiConnect.getInitialCards()
-      .then(initCards => {
-        setCards(initCards)
-      })
-  }, [])
-
-  useEffect(() => {
-    apiConnect.getUserData()
-      .then(userData => {
+    Promise.all([apiConnect.getInitialCards(), apiConnect.getUserData()])
+      .then(([initialCards, userData]) => {
+        setCards(initialCards)
         setUserName(userData.name)
         setUserDescription(userData.about)
         setUserAvatar(userData.avatar)
       })
+      .catch(err => console.log(`Возникла ошибка ${err}`))
   }, [])
+
   return (
     <main className="content">
       <section className="profile">
