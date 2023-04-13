@@ -21,11 +21,11 @@ class Api {
       .then((res) => { return this._serverResponse(res) })
   }
 
-  sendUserData(profileData) {
+  sendUserData(userName, userDescription) {
     return fetch(`${this._link}users/me`, {
       headers: this._headers,
       method: 'PATCH',
-      body: JSON.stringify({ name: profileData.name, about: profileData.description })
+      body: JSON.stringify({ name: userName, about: userDescription })
     })
       .then((res) => { return this._serverResponse(res) })
   }
@@ -37,7 +37,7 @@ class Api {
       .then((res) => { return this._serverResponse(res) })
   }
 
-  addCard({ name, link }) {
+  addCard(name, link) {
     return fetch(`${this._link}cards`, {
       headers: this._headers,
       method: 'POST',
@@ -53,21 +53,23 @@ class Api {
       .then((res) => { return this._serverResponse(res) })
   }
 
-  addCardLike(cardId) {
-    return fetch(`${this._link}cards/${cardId}/likes`, {
-      headers: this._headers,
-      method: 'PUT'
-    })
-      .then((res) => { return this._serverResponse(res) })
+  changeLikeCardStatus(cardId, isLiked) {
+    if (isLiked) {
+      return fetch(`${this._link}cards/${cardId}/likes`, {
+        headers: this._headers,
+        method: 'PUT'
+      })
+        .then((res) => { return this._serverResponse(res) })
+    } else {
+      return fetch(`${this._link}cards/${cardId}/likes`, {
+        headers: this._headers,
+        method: 'DELETE'
+      })
+        .then((res) => { return this._serverResponse(res) })
+    }
   }
 
-  deleteCardLike(cardId) {
-    return fetch(`${this._link}cards/${cardId}/likes`, {
-      headers: this._headers,
-      method: 'DELETE'
-    })
-      .then((res) => { return this._serverResponse(res) })
-  }
+
 
   sendAvatarData(avatarLink) {
     return fetch(`${this._link}users/me/avatar`, {
