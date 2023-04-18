@@ -25,7 +25,7 @@ function App() {
         setUserInfo(userData)
         setCards(initialCards)
       })
-      .catch(err => console.log(`Возникла ошибка ${err}`))
+      .catch(err => console.log(`Возникла глобальная ошибка ${err}`))
   }, [])
 
   function hendelUpdateUser(user) {
@@ -34,6 +34,7 @@ function App() {
         setUserInfo(res)
         closeAllPopups()
       })
+      .catch(err => console.log(`Возникла ошибка обновления данных пользователя ${err}`))
   }
 
   function handelUpdateAvatar(link) {
@@ -42,6 +43,7 @@ function App() {
         setUserInfo(res)
         closeAllPopups()
       })
+      .catch(err => console.log(`Возникла ошибка обновления данных пользователя ${err}`))
   }
 
   function handelAddCard(card) {

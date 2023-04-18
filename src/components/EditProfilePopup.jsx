@@ -43,7 +43,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         minLength="2"
         maxLength="40"
         placeholder="Имя"
-        value={userName}
+        value={userName || ''}
         onChange={handelName}
         required />
       <span className="input-name-error popup__error"></span>
@@ -54,7 +54,7 @@ export default function EditProfilePopup({ isOpen, onClose, onUpdateUser }) {
         minLength="2"
         maxLength="200"
         placeholder="Описание"
-        value={userDescription}
+        value={userDescription || ''}
         onChange={handelDescription}
         required />
       <span className="input-description-error popup__error"></span>
