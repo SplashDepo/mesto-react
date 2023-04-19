@@ -43,7 +43,7 @@ function App() {
         setUserInfo(res)
         closeAllPopups()
       })
-      .catch(err => console.log(`Возникла ошибка обновления данных пользователя ${err}`))
+      .catch(err => console.log(`Возникла ошибка обновления аватара пользователя ${err}`))
   }
 
   function handelAddCard(card) {
@@ -52,6 +52,7 @@ function App() {
         setCards([card, ...cards])
         closeAllPopups()
       })
+      .catch(err => console.log(`Возникла ошибка при создании карточки ${err}`))
   }
 
   function handleCardLike(card) {
@@ -61,6 +62,7 @@ function App() {
       .then((newCard) => {
         setCards((state) => state.map((c) => c._id === card._id ? newCard : c))
       })
+      .catch(err => console.log(`Возникла ошибка при постановке лайка ${err}`))
   }
 
   function handleCardDelete(card) {
@@ -68,6 +70,7 @@ function App() {
       .then(() => {
         setCards(cardsArr => cardsArr.filter(cardItem => cardItem._id !== card._id))
       })
+      .catch(err => console.log(`Возникла ошибка при удалении лайка ${err}`))
   }
 
   function hendelCardClick(card) {
